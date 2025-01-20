@@ -36,15 +36,15 @@ import com.sdui.MainActivity.Companion.baseView
 import com.sdui.MainActivity.Companion.screenFourChildrenArray
 import com.sdui.MainActivity.Companion.screenThreeChildrenArray
 import com.sdui.MainActivity.Companion.screenTwoChildrenArray
-import com.sdui.ui.theme.ModifierSize
 import com.sdui.ui.theme.SDUITheme
-import com.sdui.ui.theme.TextFont
-import com.sdui.ui.theme.TextFontSize
-import com.sdui.ui.theme.TextPaddingStart
-import com.sdui.ui.theme.TextSize
 import com.sdui.ui.theme.colorSet
 import com.sdui.ui.theme.getAlignment
 import com.sdui.ui.theme.getTextAlignment
+import com.sdui.ui.theme.modifierSize
+import com.sdui.ui.theme.textFont
+import com.sdui.ui.theme.textFontSize
+import com.sdui.ui.theme.textPaddingStart
+import com.sdui.ui.theme.textSize
 import kotlinx.coroutines.delay
 import org.json.JSONArray
 import org.json.JSONObject
@@ -102,13 +102,12 @@ fun MyApp() {
 
 @Composable
 fun SplashScreen(navController: NavHostController) {
-    // Use LaunchedEffect to delay navigation
     val context = LocalContext.current
     LaunchedEffect(Unit) {
         getJsonData("https://stgwww.luv.com/main_sdui/sdui.json",context)
         val jsonString = readJsonFromRaw(context, R.raw.sdui)
-       // getData(jsonString)
-        delay(3000)
+        //getData(jsonString)
+        delay(1000)
         navController.navigate("login") {
             popUpTo("splash") { inclusive = true }
         }
@@ -130,45 +129,29 @@ private fun getJsonData(url: String, context: Context) {
 private fun getData(response: String){
     val rootObject = JSONObject(response)
 
-    // Access the `screen_two` array
+
     val screenTwoArray = rootObject.getJSONArray("screen_two")
-    // Access the first object in the `screen_two` array
     val screenTwoObject = screenTwoArray.getJSONObject(0)
-    // Access `screen_two_layout` array
     val screenTwoLayoutArray = screenTwoObject.getJSONArray("screen_two_layout")
-    // Access the first layout object
     val firstLayoutObject = screenTwoLayoutArray.getJSONObject(0)
     baseView = firstLayoutObject.getString("type")
     val baseViewProperties = firstLayoutObject.getJSONObject("properties")
-
-    // Access `screen_two_children` array
-     screenTwoChildrenArray = firstLayoutObject.getJSONArray("screen_two_children")
+    screenTwoChildrenArray = firstLayoutObject.getJSONArray("screen_two_children")
 
 
-    // Access the `screen_two` array
     val screenThreeArray = rootObject.getJSONArray("screen_three")
-    // Access the first object in the `screen_two` array
     val screenThreeObject = screenThreeArray.getJSONObject(0)
-
-    // Access `screen_two_layout` array
     val screenThreeLayoutArray = screenThreeObject.getJSONArray("screen_three_layout")
-    // Access the first layout object
     val twoLayoutObject = screenThreeLayoutArray.getJSONObject(0)
     baseView = twoLayoutObject.getString("type")
-    // Access `screen_two_children` array
     screenThreeChildrenArray = twoLayoutObject.getJSONArray("screen_three_children")
 
 
-    // Access the `screen_two` array
     val screenFourArray = rootObject.getJSONArray("screen_four")
-    // Access the first object in the `screen_two` array
     val screenFourObject = screenFourArray.getJSONObject(0)
-    // Access `screen_two_layout` array
     val screenFourLayoutArray = screenFourObject.getJSONArray("screen_four_layout")
-    // Access the first layout object
     val fourLayoutObject = screenFourLayoutArray.getJSONObject(0)
     baseView = fourLayoutObject.getString("type")
-    // Access `screen_two_children` array
     screenFourChildrenArray = fourLayoutObject.getJSONArray("screen_four_children")
 
 }
@@ -196,8 +179,8 @@ private fun readJsonFromRaw(context: Context, rawResourceId: Int): String {
 
 @Composable
 fun BaseView(type:String,navController: NavHostController,jsonArray: JSONArray){
-    when(type){
-        "Column" -> {
+    when(BaseViewType.valueOf(type)){
+        BaseViewType.Column -> {
             GenericColumn(
                 modifier = Modifier.fillMaxSize(),
                 horizontalAlignment = Alignment.Start,
@@ -207,7 +190,7 @@ fun BaseView(type:String,navController: NavHostController,jsonArray: JSONArray){
                 ComponentView(type = item.getString("type"),properties = item.getJSONObject("properties"),navController)
             }
         }
-        "Row" -> {
+        BaseViewType.Row -> {
             GenericRow(
                 modifier = Modifier.padding(16.dp),
                 horizontalArrangement = Arrangement.spacedBy(16.dp),
@@ -217,7 +200,7 @@ fun BaseView(type:String,navController: NavHostController,jsonArray: JSONArray){
                 ComponentView(type = item.getString("type"),properties = item.getJSONObject("properties"),navController)
             }
         }
-        "Box" ->{
+        BaseViewType.Box ->{
             GenericBox(
                 modifier = Modifier.fillMaxSize(),
                 jsonArray  = screenThreeChildrenArray!!
@@ -231,55 +214,67 @@ fun BaseView(type:String,navController: NavHostController,jsonArray: JSONArray){
 
 @Composable
 fun ComponentView(type: String,properties: JSONObject,navController: NavHostController) {
-    when (type) {
-        "Image" -> {
+    when (ComponentViewType.valueOf(type)) {
+        ComponentViewType.Image -> {
             GenericImage(
                 imageModel = properties.getString("image"),
-                modifier = ModifierSize(properties.getString("height"),properties.getString("padding")),
+                modifier = modifierSize(properties.getInt("height"),properties.getInt("padding")),
                 alignment = getAlignment(properties.getString("alignment")),
                 contentScale = ContentScale.Crop
             )
         }
-        "Text" -> {
+        ComponentViewType.Text -> {
                 GenericText(
                     text = properties.getString("text"),
                     textAlign = getTextAlignment(properties.getString("textAlign")),
-                    modifier = TextPaddingStart(properties.getString("padding")),
+                    modifier = textPaddingStart(properties.getInt("padding")),
                     color = colorSet(properties.getString("color")),
-                    fontSize = TextFontSize(properties.getString("fontSize")),
-                    fontWeight = TextFont(properties.getString("fontWeight"))
+                    fontSize = textFontSize(properties.getInt("fontSize")),
+                    fontWeight = textFont(properties.getString("fontWeight"))
                 )
         }
-        "Button" -> {
+        ComponentViewType.Button -> {
             GenericButton(
                 onClick = { navController.navigate(properties.getString("navigate")) },
                 text = properties.getString("text"),
-                modifier = TextPaddingStart(properties.getString("padding")),
+                modifier = textPaddingStart(properties.getInt("padding")),
                 colors = buttonColors(colorResource(id = R.color.app)),
-                buttonHeight = properties.getString("height"),
-                buttonWidth = properties.getString("width"),
-                fontSize = properties.getString("fontSize"),
-                contentPadding = properties.getString("contentPadding"),
-                roundedCornerShapeSize = properties.getString("roundedCornerShapeSize"),
+                buttonHeight = properties.getInt("height"),
+                buttonWidth = properties.getInt("width"),
+                fontSize = properties.getInt("fontSize"),
+                contentPadding = properties.getInt("contentPadding"),
+                roundedCornerShapeSize = properties.getInt("roundedCornerShapeSize"),
                 textColor = properties.getString("textColor")
             )
         }
 
-        "Spacer" -> {
-            GenericSpacer(size = TextSize(properties.getString("height")))
+        ComponentViewType.Spacer -> {
+            GenericSpacer(size = textSize(properties.getInt("height")))
         }
 
-        "TextField" -> {
+        ComponentViewType.TextField -> {
             var text by rememberSaveable { mutableStateOf("") }
             GenericTextField(
                 value = text,
                 onValueChange = { text = it },
-                modifier = TextPaddingStart(properties.getString("padding")),
+                modifier = textPaddingStart(properties.getInt("padding")),
                 label = properties.getString("label"),
-                roundedCornerShapeSize = properties.getString("roundedCornerShapeSize"),
+                roundedCornerShapeSize = properties.getInt("roundedCornerShapeSize"),
                 colorCode = properties.getString("colorCode"),
                 placeholder = properties.getString("placeholder")
             )
+        }
+        ComponentViewType.OtpTextField -> {
+            OtpInputComponent(
+                viewWidth = properties.getInt("width"),
+                viewHeight = properties.getInt("height"),
+                otpLength = properties.getInt("otpLength"),
+                viewPadding = properties.getInt("padding"),
+                rowSpaceBetween = properties.getInt("rowSpaceBetween"),
+                roundedCornerShapeSize = properties.getInt("roundedCornerShapeSize"),
+                onOtpComplete = { otpValue ->
+                Log.d("OTP", "Entered OTP: $otpValue")
+            })
         }
     }
 }

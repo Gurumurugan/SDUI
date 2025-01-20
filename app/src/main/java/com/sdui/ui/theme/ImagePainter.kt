@@ -34,18 +34,7 @@ fun ModifierSize(size: String,padding: String) : Modifier {
 }
 
 
-fun getAlignment(alignment: String): Alignment {
-    return when (alignment) {
-        "center" -> Alignment.Center
-        "topStart" -> Alignment.TopStart
-        "topEnd" -> Alignment.TopEnd
-        "bottomStart" -> Alignment.BottomStart
-        "bottomEnd" -> Alignment.BottomEnd
-        "centerStart" -> Alignment.CenterStart
-        "centerEnd" -> Alignment.CenterEnd
-        else -> Alignment.Center // Default alignment
-    }
-}
+
 
 fun getTextAlignment(alignment: String): TextAlign {
     return when (alignment) {

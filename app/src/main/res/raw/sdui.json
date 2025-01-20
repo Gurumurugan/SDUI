@@ -6,7 +6,7 @@
           "type": "Column",
           "properties": {
             "horizontalAlignment": "CenterHorizontally",
-            "padding": "0",
+            "padding": 0,
             "verticalArrangement": "Center"
           },
           "screen_two_children": [
@@ -16,14 +16,14 @@
                 "image": "https://img.luv.com/luvimages/luv_vector_welcome_screen_latest.webp",
                 "contentDescription": "My Image Description",
                 "alignment" : "Center",
-                "padding": "20",
-                "height": "400"
+                "padding": 20,
+                "height": 400
               }
             },
             {
               "type": "Spacer",
               "properties": {
-                "height": "150"
+                "height": 150
               }
             },
             {
@@ -31,8 +31,8 @@
               "properties": {
                 "type": "Text",
                 "text": "Welcome to luv.com!",
-                "fontSize": "34",
-                "padding": "20",
+                "fontSize": 34,
+                "padding": 20,
                 "textAlign" : "center",
                 "fontWeight": "bold",
                 "color": "Black"
@@ -41,7 +41,7 @@
             {
               "type": "Spacer",
               "properties": {
-                "height": "1"
+                "height": 1
               }
             },
             {
@@ -49,9 +49,9 @@
               "properties": {
                 "type": "Text",
                 "text": "Where Real Love Begins",
-                "padding": "22",
+                "padding": 22,
                 "textAlign" : "start",
-                "fontSize": "15",
+                "fontSize": 15,
                 "fontWeight": "thin",
                 "color": "Black"
               }
@@ -59,7 +59,7 @@
             {
               "type": "Spacer",
               "properties": {
-                "height": "50"
+                "height": 50
               }
             },
             {
@@ -67,23 +67,23 @@
               "properties": {
                 "type": "Button",
                 "text": "Create account",
-                "fontSize": "18",
+                "fontSize": 18,
                 "fontWeight": "thin",
-                "width": "420",
-                "height" : "50",
+                "width": 420,
+                "height" : 50,
                 "startColor" : "app_color",
                 "endColor": "white",
-                "padding": "20",
+                "padding": 20,
                 "navigate": "MobileNumberUI",
-                "contentPadding": "0",
-                "roundedCornerShapeSize": "24",
+                "contentPadding": 0,
+                "roundedCornerShapeSize": 24,
                 "textColor": "white",
                 "color": "app_color"}
             },
             {
               "type": "Spacer",
               "properties": {
-                "height": "10"
+                "height": 10
               }
             },
             {
@@ -91,8 +91,8 @@
               "properties": {
                 "type": "Text",
                 "text": "Login with OTP",
-                "padding": "180",
-                "fontSize": "14",
+                "padding": 180,
+                "fontSize": 14,
                 "textAlign" : "start",
                 "fontWeight": "thin",
                 "color": "app_color"
@@ -110,7 +110,7 @@
           "type": "Column",
           "properties": {
             "horizontalAlignment": "CenterHorizontally",
-            "padding": "20",
+            "padding": 20,
             "verticalArrangement": "Center"
           },
           "screen_three_children": [
@@ -120,24 +120,24 @@
                 "image": "https://stgimg.luv.com/luvimages/luv_login_mobile.svg",
                 "contentDescription": "My Image Description",
                 "alignment" : "start",
-                "padding": "0",
-                "height": "50"
+                "padding": 0,
+                "height": 50
               }
             },
             {
               "type": "Spacer",
               "properties": {
-                "height": "40"
+                "height": 40
               }
             },
             {
               "type": "Text",
               "properties": {
                 "text": "What is your mobile number?",
-                "fontSize": "32",
+                "fontSize": 32,
                 "fontWeight": "Bold",
                 "type": "Text",
-                "padding": "10",
+                "padding": 10,
                 "textAlign" : "start",
                 "color": "Black"
               }
@@ -145,7 +145,7 @@
             {
               "type": "Spacer",
               "properties": {
-                "height": "15"
+                "height": 15
               }
             },
             {
@@ -153,28 +153,28 @@
               "properties": {
                 "label": "Enter your Mobile number",
                 "placeholder": "Mobile number",
-                "fontSize": "15",
-                "padding": "15",
+                "fontSize": 15,
+                "padding": 15,
                 "fontWeight": "thin",
                 "colorCode": "gray",
-                "roundedCornerShapeSize": "16",
+                "roundedCornerShapeSize": 16,
                 "color": "black"
               }
             },
             {
               "type": "Spacer",
               "properties": {
-                "height": "5"
+                "height": 5
               }
             },
             {
               "type": "Text",
               "properties": {
                 "text": "you will receive on SMS with a verification code.",
-                "fontSize": "12",
+                "fontSize": 12,
                 "fontWeight": "normal",
                 "type": "Text",
-                "padding": "23",
+                "padding": 23,
                 "textAlign" : "start",
                 "color": "gray"
               }
@@ -182,7 +182,7 @@
             {
               "type": "Spacer",
               "properties": {
-                "height": "500"
+                "height": 500
               }
             },
             {
@@ -190,23 +190,23 @@
               "properties": {
                 "type": "Button",
                 "text": "Next",
-                "width": "420",
-                "height" : "50",
-                "fontSize": "18",
+                "width": 420,
+                "height" : 50,
+                "fontSize": 18,
                 "fontWeight": "thin",
                 "startColor" : "app_color",
                 "endColor": "white",
                 "navigate": "OTPUI",
-                "padding": "20",
+                "padding": 20,
                 "textColor": "white",
-                "roundedCornerShapeSize": "24",
-                "contentPadding": "0",
+                "roundedCornerShapeSize": 24,
+                "contentPadding": 0,
                 "color": "app_color"}
             },
             {
               "type": "Spacer",
               "properties": {
-                "height": "2"
+                "height": 2
               }
             }
           ]
@@ -221,7 +221,7 @@
           "type": "Column",
           "properties": {
             "horizontalAlignment": "CenterHorizontally",
-            "padding": "20",
+            "padding": 20,
             "verticalArrangement": "Center"
           },
           "screen_four_children": [
@@ -231,24 +231,24 @@
                 "image": "https://stgimg.luv.com/luvimages/luv_login_otp.svg",
                 "contentDescription": "My Image Description",
                 "alignment" : "start",
-                "padding": "10",
-                "height": "60"
+                "padding": 10,
+                "height": 60
               }
             },
             {
               "type": "Spacer",
               "properties": {
-                "height": "40"
+                "height": 40
               }
             },
             {
               "type": "Text",
               "properties": {
                 "text": "Verify your number",
-                "fontSize": "32",
+                "fontSize": 32,
                 "fontWeight": "Bold",
                 "type": "Text",
-                "padding": "10",
+                "padding": 10,
                 "textAlign" : "start",
                 "color": "black"
               }
@@ -256,17 +256,17 @@
             {
               "type": "Spacer",
               "properties": {
-                "height": "1"
+                "height": 1
               }
             },
             {
               "type": "Text",
               "properties": {
                 "text": "Enter the OTP code sent via sms to your number",
-                "fontSize": "12",
+                "fontSize": 12,
                 "fontWeight": "normal",
                 "type": "Text",
-                "padding": "15",
+                "padding": 15,
                 "textAlign" : "start",
                 "color": "black"
               }
@@ -274,38 +274,40 @@
             {
               "type": "Spacer",
               "properties": {
-                "height": "15"
+                "height": 15
               }
             },
             {
-              "type": "TextField",
+              "type": "OtpTextField",
               "properties": {
                 "label": "Enter your OTP",
                 "placeholder": "OTP",
-                "fontSize": "15",
-                "padding": "15",
+                "fontSize": 15,
+                "padding": 13,
                 "fontWeight": "thin",
                 "colorCode": "gray",
-                "height": "400",
-                "width": "50",
-                "roundedCornerShapeSize": "16",
+                "height": 56,
+                "width": 56,
+                "rowSpaceBetween": 3,
+                "otpLength": 4,
+                "roundedCornerShapeSize": 9,
                 "color": "black"
               }
             },
             {
               "type": "Spacer",
               "properties": {
-                "height": "5"
+                "height": 5
               }
             },
             {
               "type": "Text",
               "properties": {
                 "text": "Didn't get? OTP",
-                "fontSize": "12",
+                "fontSize": 12,
                 "fontWeight": "normal",
                 "type": "Text",
-                "padding": "23",
+                "padding": 23,
                 "textAlign" : "start",
                 "color": "gray"
               }
@@ -313,7 +315,7 @@
             {
               "type": "Spacer",
               "properties": {
-                "height": "500"
+                "height": 500
               }
             },
             {
@@ -321,23 +323,23 @@
               "properties": {
                 "type": "Button",
                 "text": "Next",
-                "fontSize": "18",
+                "fontSize": 18,
                 "fontWeight": "thin",
-                "width": "420",
-                "height" : "50",
+                "width": 420,
+                "height" : 50,
                 "startColor" : "app_color",
                 "endColor": "white",
                 "navigate": "OTPUI",
-                "padding": "20",
-                "contentPadding": "0",
+                "padding": 20,
+                "contentPadding": 0,
                 "textColor": "white",
-                "roundedCornerShapeSize": "24",
+                "roundedCornerShapeSize": 24,
                 "color": "app_color"}
             },
             {
               "type": "Spacer",
               "properties": {
-                "height": "2"
+                "height": 2
               }
             }
           ]
